@@ -88,13 +88,16 @@ export const builds = [
     status: 'In build',
     upcoming: true,
     description:
-      'Built around a rota my family already keeps: each of us takes a week to lead family prayer, and the cycle comes back around. The app holds the cycle so nobody has to remember whose turn it is, with a daily verse and a prayer journal alongside it.',
+      'Built around a rota my family already keeps: each of us takes a week to lead family prayer, and the cycle comes back around. The app holds the cycle so nobody has to remember whose turn it is, with a daily verse and a prayer journal alongside it. It is also a deliberate process exercise: a small app run over 14 days as a full SDLC, with the charter, requirements, board and daily logs all in the open.',
     bullets: [
       'The cycle as the home screen: whose week it is now, and who has it next',
       'A verse for the day',
       'A prayer journal to write in and come back to',
+      'Charter, requirements, SDLC plan and a daily log kept in the repo',
+      'Work tracked as issues on a public board; nothing reaches main without a pull request and a green build',
+      'The rota itself is pure Dart with no I/O, so the part that has to be correct is tested without a device',
     ],
-    tech: ['Flutter', 'Firebase'],
+    tech: ['Flutter', 'Dart', 'Firebase'],
     links: [{ label: 'repo', href: 'https://github.com/Jabulile1704/Mashibini-Prayer' }],
   },
   {
@@ -194,6 +197,18 @@ export const career = [
       'Teach ASP.NET/.NET development, Git and GitHub workflow, and code review',
       'Built the AZ-204 bootcamp labs in C# and ASP.NET Core',
       'Facilitate SDLC, Agile, and software testing and QA',
+    ],
+  },
+  {
+    id: 'mashibini-tech',
+    period: '2025 – now',
+    role: 'Founder & Software Developer',
+    place: 'Mashibini Technologies',
+    current: true,
+    bullets: [
+      'Registered South African software company, founded 2025',
+      'Mobile and cloud development alongside IT training',
+      'Client and product work, delivered remotely',
     ],
   },
   {

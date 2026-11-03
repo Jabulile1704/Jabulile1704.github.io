@@ -10,7 +10,8 @@ const XY = 620 // cert line
 const career = [
   { x: 60, y: CY, name: 'CUT', sub: 'Adv. Diploma in IT', up: true, anchor: 'start', href: '#career-cut-adv' },
   { x: 290, y: CY, name: 'WWISE', sub: 'facilitator · 2025–26', up: true, href: '#career-wwise' },
-  { x: 600, y: CY2, name: 'SETA Assessor', sub: 'ETDP registered', up: true, href: '#career' },
+  { x: 480, y: CY2, name: 'Mashibini Tech', sub: 'founder · since 2025', href: '#career-mashibini-tech' },
+  { x: 640, y: CY2, name: 'SETA Assessor', sub: 'ETDP registered', up: true, href: '#career' },
 ]
 
 const build = [
