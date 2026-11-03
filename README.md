@@ -4,7 +4,7 @@ Personal portfolio website of **Jabulile Mashibini** — Azure-certified softwar
 professional and technical facilitator, targeting junior roles in **DevOps, Cloud, Software
 Engineering, and Full-Stack Development**.
 
-**Live site:** [jabulile1704.github.io/JM-Mashibini-Website-Portfolio-](https://jabulile1704.github.io/JM-Mashibini-Website-Portfolio-/)
+**Live site:** [jabulile1704.github.io](https://jabulile1704.github.io/)
 
 ## Tech Stack
 

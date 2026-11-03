@@ -1,6 +1,6 @@
 # Deploying this portfolio to Azure Static Web Apps
 
-A step-by-step guide for deploying `JM-Mashibini-Website-Portfolio-` to Azure
+A step-by-step guide for deploying `Jabulile1704.github.io` to Azure
 Static Web Apps (SWA), wired to GitHub so every push to `main` redeploys
 automatically.
 
@@ -104,14 +104,17 @@ charged. See the quota table linked at the bottom.
 This is worth understanding before you click anything, because it is the single
 most common reason a Vite site deploys to Azure and shows a **blank white page**.
 
-GitHub Pages serves your site from a *subdirectory*:
+A host may serve your site from a *subdirectory*. GitHub Pages did, while this
+repo was a project site:
 
 ```
 https://jabulile1704.github.io/JM-Mashibini-Website-Portfolio-/
                                 └──────── subdirectory ────────┘
 ```
 
-Azure Static Web Apps serves it from the *root of its own domain*:
+The repo has since been renamed to `Jabulile1704.github.io`, making it a **user
+site**, which Pages serves from the domain root — the same way Azure Static Web
+Apps serves it:
 
 ```
 https://something-123.azurestaticapps.net/
@@ -134,8 +137,8 @@ screen, only a failed request in the browser console.
 base: process.env.BASE_PATH || '/',
 ```
 
-- **Azure** sets nothing → base is `/` → `/assets/index-abc.js` ✅
-- **GitHub Pages workflow** sets `BASE_PATH=/JM-Mashibini-Website-Portfolio-/` ✅
+- **Azure**, and **Pages as a user site**, set nothing → base is `/` ✅
+- **A subdirectory host** sets `BASE_PATH=/<repo-name>/` ✅
 
 Both deployments keep working. You can verify this yourself at any time:
 
@@ -196,7 +199,7 @@ git push origin main
    | Field | Value |
    |---|---|
    | Organization | `Jabulile1704` |
-   | Repository | `JM-Mashibini-Website-Portfolio-` |
+   | Repository | `Jabulile1704.github.io` |
    | Branch | `main` |
 
 7. On **Build Details**, this is the part that matters most:

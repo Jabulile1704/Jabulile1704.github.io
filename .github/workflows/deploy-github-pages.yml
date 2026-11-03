@@ -20,9 +20,8 @@ jobs:
           node-version: 22
           cache: npm
       - name: Build
-        env:
-          # Pages serves the site from /<repo-name>/, not the domain root.
-          BASE_PATH: /JM-Mashibini-Website-Portfolio-/
+        # No BASE_PATH: this repo is the <username>.github.io user site, which
+        # Pages serves from the domain root.
         run: |
           npm ci
           npm run build
