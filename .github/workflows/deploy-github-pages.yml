@@ -20,6 +20,9 @@ jobs:
           node-version: 22
           cache: npm
       - name: Build
+        env:
+          # Pages serves the site from /<repo-name>/, not the domain root.
+          BASE_PATH: /JM-Mashibini-Website-Portfolio-/
         run: |
           npm ci
           npm run build
