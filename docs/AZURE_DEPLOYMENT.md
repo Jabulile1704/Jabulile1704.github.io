@@ -8,67 +8,36 @@ Written for an **Azure for Students** subscription.
 
 ---
 
-> ## ⚠️ Parked: blocked by subscription region policy
+> ## ✅ Unblocked and deployed — 2026-11-04
 >
-> **This guide cannot currently be completed on the Azure for Students
-> subscription it was written for.** Attempting to create the Static Web App
-> fails at the final step with:
+> This guide was parked because the **Azure for Students** subscription was
+> restricted to five regions (`centralindia`, `italynorth`, `switzerlandnorth`,
+> `uaenorth`, `brazilsouth`) with **zero overlap** with the five regions Azure
+> Static Web Apps runs in. All five were tried and all five failed with
+> `RequestDisallowedByAzure` — a Microsoft-managed platform policy with no
+> Azure Policy assignment to view, edit or exempt. Keep that in mind if you
+> ever go back to the student subscription.
 >
-> ```
-> RequestDisallowedByAzure
-> This policy maintains a set of best available regions where your
-> subscription can deploy resources.
-> ```
+> **A free trial subscription lifted the restriction**, and the app now
+> deploys. The Static Web App is `proud-dune-0e00d6e10`, wired to this repo by
+> `.github/workflows/azure-static-web-apps-proud-dune-0e00d6e10.yml`.
 >
-> The cause is a hard region collision. Azure for Students subscriptions are
-> restricted by a Microsoft-managed platform policy to roughly five regions,
-> which vary per subscription, and Static Web Apps only runs in roughly five
-> regions of its own. For this subscription the two sets do not intersect at
-> all:
+> **The first run failed**, and it is worth knowing why: Azure's **React**
+> build preset fills `output_location` with `build`, which is Create React
+> App's folder. Vite writes to `dist`. Oryx built the app correctly, then
+> looked in a folder that did not exist and stopped with *"The app build
+> failed to produce artifact folder: 'build'"*. Meanwhile the Azure URL served
+> the *"Your site will be ready soon"* placeholder — which is what Static Web
+> Apps shows when the resource exists but no content has been uploaded, not a
+> sign that it is still starting up.
 >
-> | Static Web Apps runs in | This subscription allows |
-> |---|---|
-> | Central US | centralindia |
-> | East US 2 | italynorth |
-> | West US 2 | switzerlandnorth |
-> | West Europe | uaenorth |
-> | East Asia | brazilsouth |
+> The workflow has since been changed to the approach in **section 7**: build
+> in GitHub Actions on a pinned Node 22, then upload with
+> `skip_app_build: true`.
 >
-> All five Static Web Apps regions were tested and all five failed, so this is
-> not a misconfiguration — the service is not offered anywhere this
-> subscription may deploy.
->
-> Note the error code is `RequestDisallowedByAzure`, **not**
-> `RequestDisallowedByPolicy`. It is enforced by the Azure platform for student
-> and free offers, so there is no Azure Policy assignment to view, edit or
-> exempt — the Policy blade typically shows nothing, or shows *Compliant*.
->
-> **To unblock this guide**, the subscription has to change:
->
-> - **Upgrade to Pay-As-You-Go** (*Subscriptions → Upgrade*) is the route that
->   reportedly lifts the region policy. Note the trade-off: Azure for Students
->   has no credit card and stops hard when the credit is spent, so you cannot
->   be charged. Pay-As-You-Go puts a billable card on file and removes that
->   safety net. The Static Web Apps **Free** plan itself remains $0.
-> - **An institutional subscription** via Azure Dev Tools / Education Hub, if
->   your university participates, may carry no region restriction.
-> - **A support request** for additional regions. Sources disagree on whether
->   this is ever granted for student offers; free to file, but do not plan
->   around it.
->
-> Once the subscription allows one of the five Static Web Apps regions, this
-> guide works as written from section 3 onward.
->
-> **Meanwhile the portfolio is deployed on GitHub Pages**, and the
-> `BASE_PATH` mechanism described in section 1 is what keeps the build portable
-> between a subdirectory host and a domain-root host. That part is live and in
-> use — only the Azure half is parked.
->
-> **Note:** section 9 and the final section reference
-> `public/staticwebapp.config.json`. That file has been removed from the repo,
-> since it does nothing on GitHub Pages and was being served publicly. Recreate
-> it from the contents listed at the end of this guide if you resume the Azure
-> path.
+> The site also stays live on GitHub Pages at <https://jabulile1704.github.io/>.
+> Both hosts serve from a domain root, so one build works for both and
+> `BASE_PATH` stays unset.
 
 ---
 
@@ -420,11 +389,11 @@ which puts it at the root of what Azure serves — where Azure looks for it.
 
 ---
 
-## Appendix: the removed `staticwebapp.config.json`
+## Appendix: `staticwebapp.config.json`
 
-Recreate this at `public/staticwebapp.config.json` if you resume the Azure
-path. Vite copies it from `public/` into `dist/`, which puts it at the root of
-what Azure serves — where Azure looks for it.
+This lives at `public/staticwebapp.config.json`. Vite copies it from `public/`
+into `dist/`, which puts it at the root of what Azure serves — where Azure
+looks for it. It is inert on GitHub Pages.
 
 ```json
 {
